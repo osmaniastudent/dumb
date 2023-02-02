@@ -11,18 +11,12 @@ var wrap = document.querySelector('#history-wrap');
 var form = document.querySelector('form');
 var input = document.querySelector('input');
 
-function init() {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(function(stream) {
         console.log('You let me use your mic!');
         // Create an ultranet server.
         var sonicServer = new SonicServer({alphabet: ALPHABET, debug: true});
         // Create an ultranet socket.
         var sonicSocket = new SonicSocket({alphabet: ALPHABET});
-      })
-      .catch(function(err) {
-        console.log('No mic for you!')
-      });
+function init() {
   sonicServer.start();
   sonicServer.on('message', onIncomingChat);
   form.addEventListener('submit', onSubmitForm);
